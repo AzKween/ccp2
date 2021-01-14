@@ -2,11 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\SiteRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SiteRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SiteRepository::class)
+ * @Vich\Uploadable
  */
 class Site
 {
@@ -23,9 +30,18 @@ class Site
     private $Title;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $HomePicture;
+
+    /**
+     * @var File|null
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="HomePicture")
+     *
+     */
+    private $HomePictureFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,6 +57,12 @@ class Site
      * @ORM\Column(type="text")
      */
     private $HomeBlog;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var null|DateTime
+     */
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -69,6 +91,19 @@ class Site
         $this->HomePicture = $HomePicture;
 
         return $this;
+    }
+
+    public function getHomePictureFile()
+    {
+        return $this->HomePictureFile;
+    }
+
+    public function setHomePictureFile( ?File $HomePictureFile ): void {
+        $this->HomePictureFile = $HomePictureFile;
+        if($this->HomePictureFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        //return $this;
     }
 
     public function getMenPicture(): ?string

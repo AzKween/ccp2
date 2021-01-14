@@ -1,0 +1,48 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <h1>Site</h1>
+    </div>
+    <div class="row mt-3">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ site.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ site.Title }}</td>
+            </tr>
+            <tr>
+                <th>HomePicture</th>
+                <td>{{ site.HomePicture }}</td>
+            </tr>
+            <tr>
+                <th>MenPicture</th>
+                <td>{{ site.MenPicture }}</td>
+            </tr>
+            <tr>
+                <th>WomenPicture</th>
+                <td>{{ site.WomenPicture }}</td>
+            </tr>
+            <tr>
+                <th>HomeBlog</th>
+                <td>{{ site.HomeBlog }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+        <div class='row mt-3'>
+            <a href="{{ path('site_index') }}">back to list</a>
+        </div>
+        <div class='row mt-3'>
+            <a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
+        </div>
+        <div class='row mt-3'>
+            {{ include('site/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

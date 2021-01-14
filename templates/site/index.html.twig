@@ -1,0 +1,41 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+    <h1 class='mt-4'>Site index</h1>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>HomePicture</th>
+                <th>MenPicture</th>
+                <th>WomenPicture</th>
+                <th>HomeBlog</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for site in sites %}
+            <tr>
+                <td>{{ site.id }}</td>
+                <td>{{ site.Title }}</td>
+                <td>{{ site.HomePicture }}</td>
+                <td>{{ site.MenPicture }}</td>
+                <td>{{ site.WomenPicture }}</td>
+                <td>{{ site.HomeBlog }}</td>
+                <td>
+                    <a class="text-primary mr-3" href="{{ path('site_show', {'id': site.id}) }}">show</a>
+                    <a class="text-info" href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="text-success" href="{{ path('site_new') }}">Create new</a>
+{% endblock %}
