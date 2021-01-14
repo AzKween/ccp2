@@ -7,13 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SiteRepository;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass=SiteRepository::class)
- * @Vich\Uploadable
+ * @Vich\Uploadable()
  */
 class Site
 {
@@ -86,7 +86,7 @@ class Site
         return $this->HomePicture;
     }
 
-    public function setHomePicture(string $HomePicture): self
+    public function setHomePicture(?string $HomePicture): self
     {
         $this->HomePicture = $HomePicture;
 
@@ -98,12 +98,12 @@ class Site
         return $this->HomePictureFile;
     }
 
-    public function setHomePictureFile( ?File $HomePictureFile ): void {
+    public function setHomePictureFile( ?File $HomePictureFile ): self {
         $this->HomePictureFile = $HomePictureFile;
         if($this->HomePictureFile instanceof UploadedFile){
             $this->updated_at = new \DateTime('now');
         }
-        //return $this;
+        return $this;
     }
 
     public function getMenPicture(): ?string
