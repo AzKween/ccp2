@@ -1,0 +1,40 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <h1>Features</h1>
+    </div>
+    <div class="row mt-3">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ feature.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ feature.Title }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ feature.Text }}</td>
+            </tr>
+            <tr>
+                <th>Feature_Picture</th>
+                <td>{{ feature.FeaturePicture }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+        <div class='row mt-3'>
+            <a class="text-primary" href="{{ path('features_index') }}">back to list</a>
+        </div>
+        <div class='row mt-3'>
+            <a class="text-success" href="{{ path('features_edit', {'id': feature.id}) }}">edit</a>
+        </div>
+        <div class='row mt-3'>
+            {{ include('features/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

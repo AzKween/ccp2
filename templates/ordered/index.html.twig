@@ -1,0 +1,43 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+    <h1 class='mt-4'>Ordered index</h1>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Articles</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Num_Ordered</th>
+                <th>Delivery_Address</th>
+                <th>Billing_Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ordered in ordereds %}
+            <tr>
+                <td>{{ ordered.id }}</td>
+                <td>{{ ordered.Articles }}</td>
+                <td>{{ ordered.Total }}</td>
+                <td>{{ ordered.Date ? ordered.Date|date('Y-m-d') : '' }}</td>
+                <td>{{ ordered.NumOrdered }}</td>
+                <td>{{ ordered.DeliveryAddress }}</td>
+                <td>{{ ordered.BillingAddress }}</td>
+                <td>
+                    <a class="text-primary mr-3" href="{{ path('ordered_show', {'id': ordered.id}) }}">show</a>
+                    <a class="text-info" href="{{ path('ordered_edit', {'id': ordered.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="text-success" href="{{ path('ordered_new') }}">Create new</a>
+{% endblock %}

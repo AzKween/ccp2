@@ -1,0 +1,26 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a href="{{ path('contact_index') }}">back to list</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h1>Edit Contact</h1>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            {{ include('contact/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            {{ include('contact/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

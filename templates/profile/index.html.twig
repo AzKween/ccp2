@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2 style="font-size: 1.6em;text-decoration:underline overline;">Login information</h1>
+    <div class="form-row mt-5 mb-3">
+        <div class="form-group col-md-6">
+            <label style="text-decoration:underline">E-mail</label>
+            <p>{{ app.user.email }}</p>
+        </div>
+    </div>
+    <h2 style="font-size: 1.6em;text-decoration:underline overline;">Personal information</h1>
+    <div class="form-row mt-5">
+        <div class="form-group col-md-6">
+            <label style="text-decoration:underline">Last Name</label>
+            <p>{{app.user.lastname}}</p> 
+        </div>
+        <div class="form-group col-md-6">
+            <label style="text-decoration:underline">First Name</label>
+             <p>{{ app.user.firstname}}</p>
+        </div>
+        <div class="form-group col-md-6">
+            <label style="text-decoration:underline">Address</label>
+            <p>{{ app.user.address}}</p>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputState" style="text-decoration:underline">State</label>
+            <p>England</p>
+        </div>
+        <div class="form-group col-md-6">
+            <label style="text-decoration:underline">City</label>
+            <p>{{ app.user.city}}</p>
+        </div>
+        <div class="form-group col-md-2">
+            <label style="text-decoration:underline">Zip</label>
+            <p>{{ app.user.postalcode}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

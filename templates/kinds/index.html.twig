@@ -1,0 +1,33 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+    <h1 class='mt-4'>Kinds index</h1>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Kind</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for kind in kinds %}
+            <tr>
+                <td>{{ kind.id }}</td>
+                <td>{{ kind.Kind }}</td>
+                <td>
+                    <a class="text-primary mr-3" href="{{ path('kinds_show', {'id': kind.id}) }}">show</a>
+                    <a class="text-info" href="{{ path('kinds_edit', {'id': kind.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="text-success" href="{{ path('kinds_new') }}">Create new</a>
+{% endblock %}
