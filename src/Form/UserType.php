@@ -29,7 +29,7 @@ class UserType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('Address')
-            ->add('Postal_Code')
+            ->add('Zip')
             ->add('City')
         ;
     }

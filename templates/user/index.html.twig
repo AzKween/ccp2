@@ -30,7 +30,7 @@
                 <td>{{ user.FirstName }}</td>
                 <td>{{ user.DateOfBirth ? user.DateOfBirth|date('Y-m-d') : '' }}</td>
                 <td>{{ user.Address }}</td>
-                <td>{{ user.PostalCode }}</td>
+                <td>{{ user.zip }}</td>
                 <td>{{ user.City }}</td>
                 <td>
                     <a class="text-primary mr-3" href="{{ path('user_show', {'id': user.id}) }}">show</a>
