@@ -18,8 +18,12 @@ class SiteType extends AbstractType
             ->add('HomePictureFile', FileType::class, [
                 'required' => true
             ])
-            ->add('MenPicture', TextType::class)
-            ->add('WomenPicture', TextType::class)
+            ->add('MenPictureFile', FileType::class, [
+                'required' => true
+            ])
+            ->add('WomenPictureFile', FileType::class, [
+                'required' => true
+            ])
             ->add('HomeBlog', TextType::class)
         ;
     }

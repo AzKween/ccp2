@@ -49,9 +49,25 @@ class Site
     private $MenPicture;
 
     /**
+     * @var File|null
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="MenPicture")
+     *
+     */
+    private $MenPictureFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $WomenPicture;
+
+    /**
+     * @var File|null
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="WomenPicture")
+     *
+     */
+    private $WomenPictureFile;
 
     /**
      * @ORM\Column(type="text")
@@ -98,12 +114,12 @@ class Site
         return $this->HomePictureFile;
     }
 
-    public function setHomePictureFile( ?File $HomePictureFile ): self {
+    public function setHomePictureFile( ?File $HomePictureFile ): void {
         $this->HomePictureFile = $HomePictureFile;
         if($this->HomePictureFile instanceof UploadedFile){
             $this->updated_at = new \DateTime('now');
         }
-        return $this;
+        //return $this;
     }
 
     public function getMenPicture(): ?string
@@ -111,11 +127,24 @@ class Site
         return $this->MenPicture;
     }
 
-    public function setMenPicture(string $MenPicture): self
+    public function setMenPicture(?string $MenPicture): self
     {
         $this->MenPicture = $MenPicture;
 
         return $this;
+    }
+    
+    public function getMenPictureFile()
+    {
+        return $this->MenPictureFile;
+    }
+
+    public function setMenPictureFile( ?File $MenPictureFile ): void {
+        $this->MenPictureFile = $MenPictureFile;
+        if($this->MenPictureFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        //return $this;
     }
 
     public function getWomenPicture(): ?string
@@ -123,11 +152,24 @@ class Site
         return $this->WomenPicture;
     }
 
-    public function setWomenPicture(string $WomenPicture): self
+    public function setWomenPicture(?string $WomenPicture): self
     {
         $this->WomenPicture = $WomenPicture;
 
         return $this;
+    }
+
+    public function getWomenPictureFile()
+    {
+        return $this->WomenPictureFile;
+    }
+
+    public function setWomenPictureFile( ?File $WomenPictureFile ): void {
+        $this->WomenPictureFile = $WomenPictureFile;
+        if($this->WomenPictureFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        //return $this;
     }
 
     public function getHomeBlog(): ?string
