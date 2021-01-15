@@ -26,7 +26,12 @@
             </tr>
             <tr>
                 <th>Picture</th>
-                <td>{{ article.picture }}</td>
+                <td><img class='img-fluid' style="width:250px;height:200px;" src="{{ vich_uploader_asset(article, 'PictureFile') }}"></td>
+            </tr>
+            <tr>
+                <th>Kind</th>
+                <td>{{ article.RelationKinds.kind }}</td>
+                
             </tr>
         </tbody>
     </table>

@@ -25,7 +25,7 @@ class Kinds
     private $Kind;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Relation_Kinds")
+     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="Relation_kinds")
      */
     private $articles;
 
@@ -63,7 +63,7 @@ class Kinds
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->addRelationKind($this);
+            $article->setRelationKinds($this);
         }
 
         return $this;
@@ -72,7 +72,10 @@ class Kinds
     public function removeArticle(Articles $article): self
     {
         if ($this->articles->removeElement($article)) {
-            $article->removeRelationKind($this);
+            // set the owning side to null (unless already changed)
+            if ($article->getRelationKinds() === $this) {
+                $article->setRelationKinds(null);
+            }
         }
 
         return $this;

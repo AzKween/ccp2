@@ -3,9 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Kinds;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\Choice;
+
 
 class ArticlesType extends AbstractType
 {
@@ -15,9 +21,17 @@ class ArticlesType extends AbstractType
             ->add('Name')
             ->add('Price')
             ->add('Description')
-            ->add('picture')
+            ->add('PictureFile', FileType::class, [
+                'required' => true
+            ])
             ->add('carts')
-            ->add('Relation_Kinds')
+            ->add('Relation_Kinds', EntityType::class, array(
+                'class' => kinds::class,
+                'choice_label' => 'kind',
+                'label' => 'kinds',
+                'multiple' => false,
+                
+            ))
         ;
     }
 

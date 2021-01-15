@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticlesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticlesRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * @ORM\Entity(repositoryClass=ArticlesRepository::class)
+ * @Vich\Uploadable()
  */
 class Articles
 {
@@ -35,19 +42,35 @@ class Articles
     private $Description;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
-    private $picture;
+    private $Picture;
+
+    /**
+     * @var File|null
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="picture")
+     *
+     */
+    private $PictureFile;
 
     /**
      * @ORM\ManyToMany(targetEntity=Cart::class, mappedBy="Relation_Articles")
      */
     private $carts;
 
+
     /**
-     * @ORM\ManyToMany(targetEntity=Kinds::class, inversedBy="articles")
+     * @ORM\Column(type="datetime")
+     * @var null|DateTime
      */
-    private $Relation_Kinds;
+    private $updated_at;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Kinds::class, inversedBy="articles")
+     */
+    private $Relation_kinds;
 
     public function __construct()
     {
@@ -99,14 +122,27 @@ class Articles
 
     public function getPicture(): ?string
     {
-        return $this->picture;
+        return $this->Picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $Picture): self
     {
-        $this->picture = $picture;
+        $this->Picture = $Picture;
 
         return $this;
+    }
+
+    public function getPictureFile()
+    {
+        return $this->PictureFile;
+    }
+
+    public function setPictureFile( ?File $PictureFile ): void {
+        $this->PictureFile = $PictureFile;
+        if($this->PictureFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        //return $this;
     }
 
     /**
@@ -136,26 +172,14 @@ class Articles
         return $this;
     }
 
-    /**
-     * @return Collection|Kinds[]
-     */
-    public function getRelationKinds(): Collection
+    public function getRelationKinds(): ?Kinds
     {
-        return $this->Relation_Kinds;
+        return $this->Relation_kinds;
     }
 
-    public function addRelationKind(Kinds $relationKind): self
+    public function setRelationKinds( ?Kinds $Relation_kinds): self
     {
-        if (!$this->Relation_Kinds->contains($relationKind)) {
-            $this->Relation_Kinds[] = $relationKind;
-        }
-
-        return $this;
-    }
-
-    public function removeRelationKind(Kinds $relationKind): self
-    {
-        $this->Relation_Kinds->removeElement($relationKind);
+        $this->Relation_kinds = $Relation_kinds;
 
         return $this;
     }

@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <th>Feature_Picture</th>
-                <td>{{ feature.FeaturePicture }}</td>
+                <td><img class='img-fluid' style="width:250px;height:200px;" src="{{ vich_uploader_asset(feature, 'Feature_PictureFile') }}"></td>
             </tr>
         </tbody>
     </table>

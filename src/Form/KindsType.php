@@ -13,7 +13,6 @@ class KindsType extends AbstractType
     {
         $builder
             ->add('Kind')
-            ->add('articles')
         ;
     }
 
