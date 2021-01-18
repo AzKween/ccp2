@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="amp-script-src" content="">
   
-        <title>ProductAmp</title>
+        <title>{{ sites[0].title }}</title>
   
 <link rel="canonical" href="./">
  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
@@ -109,7 +109,7 @@ body{font-family: Manrope;}blockquote{border-color: #6d7a71;}div[submit-success]
             <!-- SHOW LOGO -->
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="{{path('main')}}">ProductAMP</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="{{path('main')}}">{{ sites[0].title }}</a></span>
             </div>
             <!-- SHOW LOGO END -->
             <!-- COLLAPSED MENU -->

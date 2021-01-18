@@ -28,7 +28,7 @@ class SiteController extends AbstractController
     /**
      * @Route("/new", name="site_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SiteRepository $siteRepository): Response
     {
         $site = new Site();
         $form = $this->createForm(SiteType::class, $site);
@@ -45,23 +45,25 @@ class SiteController extends AbstractController
         return $this->render('site/new.html.twig', [
             'site' => $site,
             'form' => $form->createView(),
+            'sites' => $siteRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="site_show", methods={"GET"})
      */
-    public function show(Site $site): Response
+    public function show(Site $site, SiteRepository $siteRepository): Response
     {
         return $this->render('site/show.html.twig', [
             'site' => $site,
+            'sites' => $siteRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="site_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Site $site): Response
+    public function edit(Request $request, Site $site, SiteRepository $siteRepository): Response
     {
         $form = $this->createForm(SiteType::class, $site);
         $form->handleRequest($request);
@@ -75,13 +77,14 @@ class SiteController extends AbstractController
         return $this->render('site/edit.html.twig', [
             'site' => $site,
             'form' => $form->createView(),
+            'sites' => $siteRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="site_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Site $site): Response
+    public function delete(Request $request, Site $site, SiteRepository $siteRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$site->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
