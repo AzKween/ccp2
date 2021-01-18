@@ -135,12 +135,12 @@
             <div class="mbr-row mbr-jc-c">
                 <!--1-->
                 {% for article in articles %}
-                <div on="tap:showLightbox4-0-0" role="button" tabindex="0" class="item shop-image mbr-col-lg-4 mbr-col-md-6 mbr-col-sm-12 mbr-pb-5">
+                <div on="tap:{{article.id}}" role="button" tabindex="0" class="item shop-image mbr-col-lg-4 mbr-col-md-6 mbr-col-sm-12 mbr-pb-5">
                     <!--Ligtbox-->
-                    <amp-lightbox id="showLightbox4-0-0" layout="nodisplay">
+                    <amp-lightbox id="{{article.id}}" layout="nodisplay">
                         <div class="lightbox">
                             <div class="item-box mbr-row">
-                                <button type="button" class="close" aria-label="Close" on="tap:showLightbox4-0-0.close">
+                                <button type="button" class="close" aria-label="Close" on="tap:{{article.id}}.close">
                                     <span aria-hidden="true"></span>
                                 </button>
                                 <div class="item-box-img mbr-col-lg-6 mbr-col-md-12 mbr-col-sm-12 mbr-flex mbr-p-4">
