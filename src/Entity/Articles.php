@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use DateTime;
+use App\Entity\Cart;
+use App\Entity\Kinds;
+use App\Entity\Categories;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticlesRepository;
 use Doctrine\Common\Collections\Collection;
@@ -67,6 +70,7 @@ class Articles
      */
     private $updated_at;
 
+
     /**
      * @ORM\ManyToOne(targetEntity=Kinds::class, inversedBy="articles")
      */
@@ -76,6 +80,11 @@ class Articles
      * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="Relation_Articles")
      */
     private $categories;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $DateAdd;
 
     public function __construct()
     {
@@ -137,6 +146,7 @@ class Articles
         return $this;
     }
 
+
     public function getPictureFile()
     {
         return $this->PictureFile;
@@ -197,6 +207,18 @@ class Articles
     public function setCategories(?Categories $categories): self
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getDateAdd(): ?\DateTimeInterface
+    {
+        return $this->DateAdd;
+    }
+
+    public function setDateAdd(\DateTimeInterface $DateAdd): self
+    {
+        $this->DateAdd = $DateAdd;
 
         return $this;
     }

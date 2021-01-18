@@ -19,6 +19,14 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
+    public function findAllOrgerByDate(){
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.DateAdd', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */

@@ -2,16 +2,16 @@
 
 namespace App\Form;
 
+use App\Entity\Kinds;
 use App\Entity\Articles;
 use App\Entity\Categories;
-use App\Entity\Kinds;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 
 class ArticlesType extends AbstractType
@@ -40,6 +40,9 @@ class ArticlesType extends AbstractType
                 'multiple' => false,
                 
             ))
+            ->add('DateAdd', DateTimeType::class, [
+                'widget' => 'single_text',
+            ])
         ;
     }
 
