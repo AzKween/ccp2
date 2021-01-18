@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Site;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -24,7 +25,7 @@ class SiteType extends AbstractType
             ->add('WomenPictureFile', FileType::class, [
                 'required' => true
             ])
-            ->add('HomeBlog', TextType::class)
+            ->add('HomeBlog', CKEditorType::class)
         ;
     }
 

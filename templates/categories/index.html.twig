@@ -1,0 +1,33 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+    <h1 class='mt-4'>Categories index</h1>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.Category }}</td>
+                <td>
+                    <a class="text-primary mr-3" href="{{ path('categories_show', {'id': category.id}) }}">show</a>
+                    <a class="text-info" href="{{ path('categories_edit', {'id': category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="text-success" href="{{ path('categories_new') }}">Create new</a>
+{% endblock %}

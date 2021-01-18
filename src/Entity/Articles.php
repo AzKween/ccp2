@@ -72,6 +72,11 @@ class Articles
      */
     private $Relation_kinds;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="Relation_Articles")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -180,6 +185,18 @@ class Articles
     public function setRelationKinds( ?Kinds $Relation_kinds): self
     {
         $this->Relation_kinds = $Relation_kinds;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

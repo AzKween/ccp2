@@ -12,6 +12,8 @@
                 <th>Price</th>
                 <th>Description</th>
                 <th>Picture</th>
+                <th>Kind</th>
+                <th>Category</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,6 +25,8 @@
                 <td>{{ article.Price }}</td>
                 <td>{{ article.Description }}</td>
                 <td>{{ article.picture }}</td>
+                <td>{{ article.RelationKinds.kind }}</td>
+                <td>{{ article.Categories.category }}</td>
                 <td>
                     <a class="text-primary mr-3" href="{{ path('articles_show', {'id': article.id}) }}">show</a>
                     <a class="text-info" href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
@@ -30,7 +34,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

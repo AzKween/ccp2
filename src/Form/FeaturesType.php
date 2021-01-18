@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Features;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class FeaturesType extends AbstractType
 {
@@ -14,7 +15,7 @@ class FeaturesType extends AbstractType
     {
         $builder
             ->add('Title')
-            ->add('Text')
+            ->add('Text', CKEditorType::class)
             ->add('Feature_PictureFile', FileType::class, [
                 'required' => true
             ])

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Categories;
 use App\Entity\Kinds;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -29,6 +30,13 @@ class ArticlesType extends AbstractType
                 'class' => kinds::class,
                 'choice_label' => 'kind',
                 'label' => 'kinds',
+                'multiple' => false,
+                
+            ))
+            ->add('categories', EntityType::class, array(
+                'class' => Categories::class,
+                'choice_label' => 'category',
+                'label' => 'categories',
                 'multiple' => false,
                 
             ))
