@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/gcs_gcu")
+ * @Route("/admin/gcs_gcu")
  */
 class GCSGCUController extends AbstractController
 {

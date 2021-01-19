@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/ordered")
+ * @Route("/admin/ordered")
  */
 class OrderedController extends AbstractController
 {

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/kinds")
+ * @Route("/admin/kinds")
  */
 class KindsController extends AbstractController
 {

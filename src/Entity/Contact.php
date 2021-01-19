@@ -37,6 +37,13 @@ class Contact
      */
     private $Text;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Reply;
+
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,4 +96,18 @@ class Contact
 
         return $this;
     }
+
+    public function getReply(): ?string
+    {
+        return $this->Reply;
+    }
+
+    public function setReply(?string $Reply): self
+    {
+        $this->Reply = $Reply;
+
+        return $this;
+    }
+
+
 }
