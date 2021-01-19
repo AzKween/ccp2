@@ -18,6 +18,14 @@ class FeaturesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Features::class);
     }
+    
+    public function findAllOrgerByDate(){
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.DateAdd', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+    }
 
     // /**
     //  * @return Features[] Returns an array of Features objects

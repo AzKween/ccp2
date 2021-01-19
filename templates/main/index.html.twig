@@ -234,10 +234,11 @@
             </div>
         </div>
         <div class="mbr-row mbr-jc-c">
+        {% for feature in features %}
             <div class="card md-pb mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <amp-img src="assets/images/01.jpg" layout="responsive" width="718.0851063829788" height="600" alt="" class="mobirise-loader">
+                        <amp-img src="{{ vich_uploader_asset(feature, 'Feature_PictureFile') }}" layout="responsive" width="718.0851063829788" height="600" alt="" class="mobirise-loader">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -248,55 +249,14 @@
                         </amp-img>
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style mbr-pb-1 display-7">Designers of New York</h4>
+                        <h4 class="card-title mbr-fonts-style mbr-pb-1 display-7">{{feature.title}}</h4>
                         <p class="mbr-text mbr-fonts-style mbr-semibold display-4">
                             Read more</p>
                     </div>
 
                 </div>
             </div>
-            <div class="card md-pb mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <amp-img src="assets/images/03.jpg" layout="responsive" width="453.6170212765957" height="600" alt="" class="mobirise-loader">
-                            <div placeholder="" class="placeholder">
-                                <div class="mobirise-spinner">
-                                    <em></em>
-                                    <em></em>
-                                    <em></em>
-                                </div></div>
-                            
-                        </amp-img>
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style mbr-pb-1 display-7">Unique Design</h4>
-                        <p class="mbr-text mbr-fonts-style mbr-semibold display-4">
-                            Read more</p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="card md-pb mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4 last-child">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <amp-img src="assets/images/04.jpg" layout="responsive" width="390.9836065573771" height="600" alt="" class="mobirise-loader">
-                            <div placeholder="" class="placeholder">
-                                <div class="mobirise-spinner">
-                                    <em></em>
-                                    <em></em>
-                                    <em></em>
-                                </div></div>
-                            
-                        </amp-img>
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style mbr-pb-1 display-7">Sunglasses Collection</h4>
-                        <p class="mbr-text mbr-fonts-style mbr-semibold display-4">
-                            Read more<br></p>
-
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
         </div>
     </div>
 </section>

@@ -8,6 +8,7 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class FeaturesType extends AbstractType
 {
@@ -18,6 +19,9 @@ class FeaturesType extends AbstractType
             ->add('Text', CKEditorType::class)
             ->add('Feature_PictureFile', FileType::class, [
                 'required' => true
+            ])
+            ->add('DateAdd', DateTimeType::class, [
+                'widget' => 'single_text',
             ])
         ;
     }

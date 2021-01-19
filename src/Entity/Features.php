@@ -51,6 +51,11 @@ class Features
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $DateAdd;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,5 +108,17 @@ class Features
             $this->updated_at = new \DateTime('now');
         }
         //return $this;
+    }
+
+    public function getDateAdd(): ?\DateTimeInterface
+    {
+        return $this->DateAdd;
+    }
+
+    public function setDateAdd(\DateTimeInterface $DateAdd): self
+    {
+        $this->DateAdd = $DateAdd;
+
+        return $this;
     }
 }
