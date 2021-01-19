@@ -20,7 +20,11 @@
             </div>
             <div class="mbr-col-lg-7 mbr-col-md-12 img-col mbr-m-auto mbr-col-sm-12">
                 <div class="img-wrapper">
+                {% if sites == true %}
                     <amp-img src="{{ vich_uploader_asset(sites[0], 'HomePictureFile') }}" alt="" width="1099.8670212765958" height="919" layout="responsive" class="mobirise-loader mbr-m-auto align-center">
+                    {% else %}
+                    <amp-img src="#" alt="" width="1099.8670212765958" height="919" layout="responsive" class="mobirise-loader mbr-m-auto align-center">
+                {% endif %}        
                         <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -94,7 +98,11 @@
         <div class="mbr-row">
         <div class="mbr-col-lg-6 mbr-col-md-12 img-col mbr-m-auto md-pb mbr-col-sm-12">
                 <div class="img-wrapper">
+                {% if sites == true %}
                     <amp-img src="{{ vich_uploader_asset(sites[0], 'WomenPictureFile') }}" alt="" width="651.8163265306123" height="779" layout="responsive" class="mobirise-loader mbr-m-auto align-center">
+                   {% else %}
+                    <amp-img src="#" alt="" width="651.8163265306123" height="779" layout="responsive" class="mobirise-loader mbr-m-auto align-center">
+                {% endif %}
                         <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -107,7 +115,12 @@
             </div>
             <div class="mbr-col-lg-6 mbr-col-md-12 mbr-col-sm-12">
                 <div class="content">
-                    <p class="mbr-fonts-style mbr-text align-left mbr-pb-5  display-7">{{sites[0].HomeBlog|striptags}}<br></p>
+                    {% if sites == true %}
+                            <p class="mbr-fonts-style mbr-text align-left mbr-pb-5  display-7">{{sites[0].HomeBlog|striptags}}<br></p>    
+                        {% else %}
+                            <p class="mbr-fonts-style mbr-text align-left mbr-pb-5  display-7">Inserte text<br></p>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
