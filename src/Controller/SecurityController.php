@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoriesRepository;
 use App\Repository\SiteRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, SiteRepository $siteRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils, SiteRepository $siteRepository, CategoriesRepository $categoriesRepository): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -28,6 +29,7 @@ class SecurityController extends AbstractController
             'last_username' => $lastUsername, 
             'error' => $error,
             'sites' => $siteRepository->findAll(),
+            'categories' => $categoriesRepository->findAll(),
             ]);
     }
 
