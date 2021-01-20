@@ -56,29 +56,18 @@
 <section class="features1 cid-s0bsg6BUXn" id="features01-2">   
     <div class="container-fluid mbr-white">
         <div class="mbr-row">
-            <div class="mbr-col-lg-6 mbr-col-md-6 col1 mbr-m-auto mbr-col-sm-12">​
+        {% for Kind in kind %}
+            <div class="mbr-col-lg-6 mbr-col-md-6 {{ Kind.kind|lower }} mbr-m-auto mbr-col-sm-12">​
                 <div class="mbr-overlay"></div>
                 <div class="content">
                     
-                    <h1 class="mbr-section-title mbr-fonts-style align-left mbr-pb-2 display-2"><strong>Women</strong></h1>
+                    <h1 class="mbr-section-title mbr-fonts-style align-left mbr-pb-2 display-2"><strong>{{ Kind.kind }}</strong></h1>
                     
-                    <div class="mbr-section-btn mbr-pt-5 align-left"><a class="btn btn-md btn-white-outline display-4" href="#"><span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M24 11l-6.7 6.7-1.4-1.4 4.3-4.3H0v-2h20.2l-4.3-4.3 1.4-1.4L24 11z"></path></svg></span>Shop Now</a>
+                    <div class="mbr-section-btn mbr-pt-5 align-left"><a class="btn btn-md btn-white-outline display-4" href="{{path('articles_kinds', { 'kind': Kind.id })}}"><span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M24 11l-6.7 6.7-1.4-1.4 4.3-4.3H0v-2h20.2l-4.3-4.3 1.4-1.4L24 11z"></path></svg></span>Shop Now</a>
                     </div>
                 </div>
             </div>
-            <div class="mbr-col-lg-6 mbr-col-md-6 col2 mbr-m-auto mbr-col-sm-12">
-                <div class="mbr-overlay"></div>
-                <div class="content">
-
-                    
-                    <h1 class="mbr-section-title mbr-fonts-style align-left mbr-pb-2 display-2"><strong>Men</strong></h1>
-                    
-                    <div class="mbr-section-btn mbr-pt-5 align-left"><a class="btn btn-md btn-white-outline display-4" href="#"><span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M24 11l-6.7 6.7-1.4-1.4 4.3-4.3H0v-2h20.2l-4.3-4.3 1.4-1.4L24 11z"></path></svg></span>Shop Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
 </section>
 
 <section class="content5 cid-s0bsQkplRB" id="content05-c">
@@ -485,39 +474,10 @@
 
 
                 <!--Formbuilder Form-->
-                <form method="POST" class="mbr-form" action-xhr="https://formoid.net/api/amp-form/push" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="7pvecEC03Vl+iE4OgQhJAcIKUvNYgbOybompFz5FUt3dVJFrkL+iG/xWutYm3nUCmEi/c4T1pNdb2AAoQ8xvTPYYbZ4xYaU1nPta8EIdnJ+Y4Tg20XU3s+66FlGtbrNh.G2Kid/KefslhAU0N2UdYn90LIQRTfVa0AjTyWXz86bWEg6Xl4Y/o7kjTXS9C7ZEP560NTnn8j/doIZNHJa6LgqlruO85KB+iQaFXyH185Q4Y6spTW2FPPRLr2XFr3x5Y">
-                    <div class="mbr-row">
-                        <div submit-success="" class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12">
-                            <template data-form-alert="" type="amp-mustache">Thanks for filling out the form!</template>
-                        </div>
-                        <div submit-error="" class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12">
-                            <template data-form-alert="" type="amp-mustache">Failed!</template>
-                        </div>
-                    </div>
-                    <div class="dragArea mbr-row">
-                        <div class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12 field" data-for="form[data][0][1]">
-                            <input type="hidden" name="form[data][0][0]" value="name" id="form[data][0][0]-form01-a" data-form-field="">
-                            <input type="text" name="form[data][0][1]" placeholder="Full Name" data-form-field="name" class="field-input display-7" value="" id="form[data][0][1]-form01-a">
-                        </div>
-                        <div class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12 field" data-for="form[data][1][1]">
-                            <input type="hidden" name="form[data][1][0]" value="email" id="form[data][1][0]-form01-a" data-form-field="">
-                            <input type="email" name="form[data][1][1]" placeholder="Email" data-form-field="email" class="field-input display-7" value="" id="form[data][1][1]-form01-a">
-                        </div>
-                        <div data-for="form[data][2][1]" class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12 field">
-                            <input type="hidden" name="form[data][2][0]" value="text" id="form[data][2][0]-form01-a" data-form-field="">
-                            <input type="text" name="form[data][2][1]" placeholder="Subject" data-form-field="text" class="field-input display-7" value="" id="form[data][2][1]-form01-a">
-                        </div>
-                        <div data-for="form[data][3][1]" class="mbr-col-lg-12 mbr-col-md-12 mbr-col-sm-12 field">
-                            <input type="hidden" name="form[data][3][0]" value="message" id="form[data][3][0]-form01-a" data-form-field="">
-                            <textarea name="form[data][3][1]" placeholder="Comment" data-form-field="message" class="field-input display-7" id="form[data][3][1]-form01-a"></textarea>
-                        </div>
-                        <div class="mbr-col-auto"><button type="submit" class="btn btn-black display-7">Send</button></div>
-                    </div>
-                <span class="gdpr-block">
-<label>
-<span class="textGDPR" style="color: #a7a7a7"><input type="checkbox" name="gdpr" id="gdpr-form01-a" required="">By continuing you agree to our <a style="color: #767676; text-decoration: none;" href="terms.html">Terms of Service</a> and <a style="color: #767676; text-decoration: none;" href="policy.html">Privacy Policy</a>.</span>
-</label>
-</span></form>
+                {{ form_start(contact) }}
+                {{ form_widget(contact) }}
+                <div class="mbr-col-auto"><button type="submit" class="btn btn-black display-7">Send</button></div>
+                {{ form_end(contact) }}
                 <!--Formbuilder Form-->
             </div>
 
