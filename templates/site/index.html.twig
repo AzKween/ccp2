@@ -8,10 +8,10 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>HomePicture</th>
-                <th>MenPicture</th>
-                <th>WomenPicture</th>
-                <th>HomeBlog</th>
+                <th>Home Picture</th>
+                <th>First Category Picture</th>
+                <th>Second Category Picture</th>
+                <th>Home Blog</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,8 +21,8 @@
                 <td>{{ site.id }}</td>
                 <td>{{ site.Title }}</td>
                 <td>{{ site.HomePicture }}</td>
-                <td>{{ site.MenPicture }}</td>
-                <td>{{ site.WomenPicture }}</td>
+                <td>{{ site.FirstCategoryPicture }}</td>
+                <td>{{ site.SecondCategoryPicture }}</td>
                 <td>{{ site.HomeBlog }}</td>
                 <td>
                     <a class="text-primary mr-3" href="{{ path('site_show', {'id': site.id}) }}">show</a>

@@ -46,28 +46,28 @@ class Site
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $MenPicture;
+    private $FirstCategoryPicture;
 
     /**
      * @var File|null
      * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
-     * @Vich\UploadableField(mapping="upload", fileNameProperty="MenPicture")
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="FirstCategoryPicture")
      *
      */
-    private $MenPictureFile;
+    private $FirstCategoryPictureFile;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $WomenPicture;
+    private $SecondCategoryPicture;
 
     /**
      * @var File|null
      * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
-     * @Vich\UploadableField(mapping="upload", fileNameProperty="WomenPicture")
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="SecondCategoryPicture")
      *
      */
-    private $WomenPictureFile;
+    private $SecondCategoryPictureFile;
 
     /**
      * @ORM\Column(type="text")
@@ -122,51 +122,51 @@ class Site
         //return $this;
     }
 
-    public function getMenPicture(): ?string
+    public function getFirstCategoryPicture(): ?string
     {
-        return $this->MenPicture;
+        return $this->FirstCategoryPicture;
     }
 
-    public function setMenPicture(?string $MenPicture): self
+    public function setFirstCategoryPicture(?string $FirstCategoryPicture): self
     {
-        $this->MenPicture = $MenPicture;
+        $this->FirstCategoryPicture = $FirstCategoryPicture;
 
         return $this;
     }
     
-    public function getMenPictureFile()
+    public function getFirstCategoryPictureFile()
     {
-        return $this->MenPictureFile;
+        return $this->FirstCategoryPictureFile;
     }
 
-    public function setMenPictureFile( ?File $MenPictureFile ): void {
-        $this->MenPictureFile = $MenPictureFile;
-        if($this->MenPictureFile instanceof UploadedFile){
+    public function setFirstCategoryPictureFile( ?File $FirstCategoryPictureFile ): void {
+        $this->FirstCategoryPictureFile = $FirstCategoryPictureFile;
+        if($this->FirstCategoryPictureFile instanceof UploadedFile){
             $this->updated_at = new \DateTime('now');
         }
         //return $this;
     }
 
-    public function getWomenPicture(): ?string
+    public function getSecondCategoryPicture(): ?string
     {
-        return $this->WomenPicture;
+        return $this->SecondCategoryPicture;
     }
 
-    public function setWomenPicture(?string $WomenPicture): self
+    public function setSecondCategoryPicture(?string $SecondCategoryPicture): self
     {
-        $this->WomenPicture = $WomenPicture;
+        $this->SecondCategoryPicture = $SecondCategoryPicture;
 
         return $this;
     }
 
-    public function getWomenPictureFile()
+    public function getSecondCategoryPictureFile()
     {
-        return $this->WomenPictureFile;
+        return $this->SecondCategoryPictureFile;
     }
 
-    public function setWomenPictureFile( ?File $WomenPictureFile ): void {
-        $this->WomenPictureFile = $WomenPictureFile;
-        if($this->WomenPictureFile instanceof UploadedFile){
+    public function setSecondCategoryPictureFile( ?File $SecondCategoryPictureFile ): void {
+        $this->SecondCategoryPictureFile = $SecondCategoryPictureFile;
+        if($this->SecondCategoryPictureFile instanceof UploadedFile){
             $this->updated_at = new \DateTime('now');
         }
         //return $this;

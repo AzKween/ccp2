@@ -19,10 +19,10 @@ class SiteType extends AbstractType
             ->add('HomePictureFile', FileType::class, [
                 'required' => true
             ])
-            ->add('MenPictureFile', FileType::class, [
+            ->add('FirstCategoryPictureFile', FileType::class, [
                 'required' => true
             ])
-            ->add('WomenPictureFile', FileType::class, [
+            ->add('SecondCategoryPictureFile', FileType::class, [
                 'required' => true
             ])
             ->add('HomeBlog', CKEditorType::class)

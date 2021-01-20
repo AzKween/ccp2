@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactFrontType;
 use App\Repository\SiteRepository;
+use App\Repository\KindsRepository;
 use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ class ContactFrontController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(SiteRepository $siteRepository, CategoriesRepository $categoriesRepository, Request $request): Response
+    public function index(SiteRepository $siteRepository, KindsRepository $kindsRepository, CategoriesRepository $categoriesRepository, Request $request): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactFrontType::class, $contact);
@@ -37,6 +38,7 @@ class ContactFrontController extends AbstractController
             'sites' => $siteRepository->findAll(),
             'categories' => $categoriesRepository->findAll(),
             'contact' => $form->createView(),
+            'kinds' => $kindsRepository->findAll(),
         ]);
     }
 }

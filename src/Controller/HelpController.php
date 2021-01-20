@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\SiteRepository;
+use App\Repository\KindsRepository;
 use App\Repository\FeaturesRepository;
 use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +15,14 @@ class HelpController extends AbstractController
     /**
      * @Route("/help", name="help")
      */
-    public function index(SiteRepository $siteRepository, CategoriesRepository $categoriesRepository, FeaturesRepository $featuresRepository): Response
+    public function index(SiteRepository $siteRepository, KindsRepository $kindsRepository, CategoriesRepository $categoriesRepository, FeaturesRepository $featuresRepository): Response
     {
         return $this->render('help/index.html.twig', [
             'controller_name' => 'HelpController',
             'sites' => $siteRepository->findAll(),
             'categories' => $categoriesRepository->findAll(),
-            'features' => $featuresRepository->findAll()
+            'features' => $featuresRepository->findAll(),
+            'kinds' => $kindsRepository->findAll(),
         ]);
     }
 }
