@@ -52,10 +52,6 @@ class Ordered
      */
     private $user;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Cart::class, inversedBy="ordereds")
-     */
-    private $Relation_Cart;
 
     public function getId(): ?int
     {
@@ -142,18 +138,6 @@ class Ordered
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getRelationCart(): ?Cart
-    {
-        return $this->Relation_Cart;
-    }
-
-    public function setRelationCart(?Cart $Relation_Cart): self
-    {
-        $this->Relation_Cart = $Relation_Cart;
 
         return $this;
     }

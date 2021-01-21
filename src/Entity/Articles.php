@@ -160,32 +160,6 @@ class Articles
         //return $this;
     }
 
-    /**
-     * @return Collection|Cart[]
-     */
-    public function getCarts(): Collection
-    {
-        return $this->carts;
-    }
-
-    public function addCart(Cart $cart): self
-    {
-        if (!$this->carts->contains($cart)) {
-            $this->carts[] = $cart;
-            $cart->addRelationArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCart(Cart $cart): self
-    {
-        if ($this->carts->removeElement($cart)) {
-            $cart->removeRelationArticle($this);
-        }
-
-        return $this;
-    }
 
     public function getRelationKinds(): ?Kinds
     {

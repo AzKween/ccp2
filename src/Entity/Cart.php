@@ -6,6 +6,7 @@ use App\Repository\CartRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Json;
 
 /**
  * @ORM\Entity(repositoryClass=CartRepository::class)
@@ -20,9 +21,9 @@ class Cart
     private $id;
 
     /**
-     * @ORM\Column(type="text", length=255)
+     * @ORM\Column(type="json")
      */
-    private $Articles;
+    private $Articles = [];
 
     /**
      * @ORM\Column(type="float")
@@ -30,19 +31,9 @@ class Cart
     private $Total;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Relation_Cart")
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
-    private $users;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Ordered::class, mappedBy="Relation_Cart")
-     */
-    private $ordereds;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="carts")
-     */
-    private $Relation_Articles;
+    private $Relation_User;
 
     public function __construct()
     {
@@ -56,12 +47,12 @@ class Cart
         return $this->id;
     }
 
-    public function getArticles(): ?string
+    public function getArticles(): array
     {
         return $this->Articles;
     }
 
-    public function setArticles(string $Articles): self
+    public function setArticles(array $Articles): self
     {
         $this->Articles = $Articles;
 
@@ -80,86 +71,14 @@ class Cart
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getRelationUser(): ?User
     {
-        return $this->users;
+        return $this->Relation_User;
     }
 
-    public function addUser(User $user): self
+    public function setRelationUser(?User $Relation_User): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setRelationCart($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getRelationCart() === $this) {
-                $user->setRelationCart(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Ordered[]
-     */
-    public function getOrdereds(): Collection
-    {
-        return $this->ordereds;
-    }
-
-    public function addOrdered(Ordered $ordered): self
-    {
-        if (!$this->ordereds->contains($ordered)) {
-            $this->ordereds[] = $ordered;
-            $ordered->setRelationCart($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrdered(Ordered $ordered): self
-    {
-        if ($this->ordereds->removeElement($ordered)) {
-            // set the owning side to null (unless already changed)
-            if ($ordered->getRelationCart() === $this) {
-                $ordered->setRelationCart(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Articles[]
-     */
-    public function getRelationArticles(): Collection
-    {
-        return $this->Relation_Articles;
-    }
-
-    public function addRelationArticle(Articles $relationArticle): self
-    {
-        if (!$this->Relation_Articles->contains($relationArticle)) {
-            $this->Relation_Articles[] = $relationArticle;
-        }
-
-        return $this;
-    }
-
-    public function removeRelationArticle(Articles $relationArticle): self
-    {
-        $this->Relation_Articles->removeElement($relationArticle);
+        $this->Relation_User = $Relation_User;
 
         return $this;
     }

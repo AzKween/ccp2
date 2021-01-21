@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class='container'>
+<div class='row'>
+    <table id="mycartTable" class='table'>
+        <thead>
+            <th>Your cart</th>
+            <th class='text-right'>Price</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div><hr>
+<div class='row'>
+    <div class='col-10 text-right'><p>Total:</p></div><div class='col-2'><p></p></div>
+</div>
+</div>
+</div>
+
+<script>
+        $(document).ready(function () {
+            var myTable = $('#mycartTable')
+            var myTableBody = myTable.children('tbody')
+            var myForm = $('#addTodo')
+
+
+            $.get("{{ path('api') }}", function (data) {
+                let x
+                let a
+                for (x in data.Cart) {
+
+                    let cart = data.Cart[x]
+
+                    for ( a in cart.Articles){
+
+                    let articles = cart.Articles[a]
+
+                    let str = `<tr>
+                                <td class=''><p>` + articles.Name + `</p><br>
+                                    <a style='font-size:0.95em; text-decoration:underline;' href='#'>supprimer</a><select class="custom-select col-2 ml-4" id="inputGroupSelect01">
+                                        <option value="1">Qté: 1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        </select></td>
+                                <td class='text-right'><span class="cur mbr-fonts-style display-4">$</span>` + articles.Price + `</td>
+                               </tr>`
+                    
+                myTableBody.append(str)
+                }
+                }
+            })})
+</script>
+{% endblock %}

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -74,6 +75,9 @@ body{font-family: Manrope;}blockquote{border-color: #6d7a71;}div[submit-success]
                     {% endif %}
                         <li class="nav-item">
                             <a class="nav-link link  text-black display-4" href="{{path('profile')}}" aria-expanded="false">My account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link  text-black display-4" href="{{path('app_register')}}" aria-expanded="false"><p><i class="fas fa-shopping-cart"></i></p></a>    
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -146,6 +150,9 @@ body{font-family: Manrope;}blockquote{border-color: #6d7a71;}div[submit-success]
                     {% endif %}
                         <li class="nav-item">
                             <a class="nav-link link  text-black display-4" href="{{path('app_logout')}}" aria-expanded="false">Log out</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link  text-black display-4" href="{{path('cart')}}" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><i class="fas fa-shopping-cart"></i></svg></a>    
                         </li>
                     {% else %}
                         <li class="nav-item">
