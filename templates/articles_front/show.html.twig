@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="item-img">
+                <amp-img src="{{ vich_uploader_asset(article, 'PictureFile') }}" layout="responsive" width="598.404255319149" height="500" alt="image" class="placeholder-loader">
+                    <div placeholder="" class="placeholder">
+                        <div class="mobirise-spinner">
+                            <em></em>
+                            <em></em>
+                            <em></em>
+                        </div>
+                    </div>
+                </amp-img>
+            </div>
+        </div>
+        <div class="col-6">
+            <h4 data-id='{{article.name}}' class="item-title mbr-fonts-style mbr-bold text-success mbr-pb-1 display-4 name">{{article.name}}</h4><br>
+            <p data-id='{{ app.user.id }}' id='user' class="item-box-text item-box-text1 mbr-fonts-style mbr-pb-4 display-7">{{article.description}}</p>
+        </div>
+        <div class="col-3">
+        <span class="cur mbr-fonts-style display-4">$ </span><span data-id='{{article.price}}' id='price' class="item-price mbr-fonts-style display-4">{{article.price}}</span><br>
+        <a href="{{ path('articles_show', {'id':article.id}) }}" id="btnBuy" class="btn item-box-btn btn-black display-4 mt-5"><span>Buy Now</span></a>                    
+        </div>
+                        
+    </div>
+</div>
+<script>
+//Lorsque mon formulaire est validé
+            $('#btnBuy').click(function (event) {
+                //Requete pour ajouter une todo
+                //je bloque la redirection de mon formulaire
+                event.preventDefault()
+                //on définit la valeur de l'input comme étant la variable todoAction
+                let name = $('.name').attr('data-id')
+                let price = $('#price').attr('data-id')
+                let user = $('#user').attr('data-id')
+                //on lance la requete ajax (en post)
+                $.post("{{ path('new_article') }}",
+                    {   
+                        relation_user_id : user,
+                        Articles: [{"Name": name, "Price": price}],
+                        Total: 0
+                    }
+                    , function (data) {
+                        console.log(data)/*
+                        if (data.status == 500) {
+                            alert("Le champs est vide !")
+                        } else {
+                            //tout va bien
+                            let lockBtn = `<button class="btn btn-sm btn-warning" onclick="toggleTodo(` + data.id + `)">
+                                        <i class="fas fa-lock"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteTodo(` + data.id + `)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    `
+                            let todoName = "<span>" + todoAction + "</span>"
+                            let str = `<tr data-id="` + data.id + `">
+                                    <td>` + data.id + `</td>
+                                    <td>` + todoName + ` </td>
+                                    <td> ` + lockBtn + ` </td>
+                                </tr>`
+                            myTableBody.append(str)
+                            $('#actionInput').val('')
+                        }*/
+                    })
+            })
+</script>
+{% endblock %}

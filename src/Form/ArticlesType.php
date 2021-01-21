@@ -25,7 +25,6 @@ class ArticlesType extends AbstractType
             ->add('PictureFile', FileType::class, [
                 'required' => true
             ])
-            ->add('carts')
             ->add('Relation_Kinds', EntityType::class, array(
                 'class' => kinds::class,
                 'choice_label' => 'kind',

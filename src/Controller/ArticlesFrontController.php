@@ -53,4 +53,17 @@ class ArticlesFrontController extends AbstractController
             'kinds' => $kindsRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/{id}", name="articles_show", methods={"GET"})
+     */
+    public function show(Articles $article, CategoriesRepository $categoriesRepository, KindsRepository $kindsRepository, SiteRepository $siteRepository, ArticlesRepository $articlesRepository , Request $request, PaginatorInterface $paginator): Response
+    {
+        return $this->render('articles_front/show.html.twig', [
+            'controller_name' => 'ArticlesFrontController',
+            'sites' => $siteRepository->findAll(),
+            'categories' => $categoriesRepository->findAll(),
+            'article' => $article,
+            'kinds' => $kindsRepository->findAll(),
+        ]);
+    }
 }

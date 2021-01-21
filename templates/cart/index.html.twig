@@ -14,7 +14,7 @@
     </table>
 </div><hr>
 <div class='row'>
-    <div class='col-10 text-right'><p>Total:</p></div><div class='col-2'><p></p></div>
+    <div class='col-9 text-right'><p>Total:</p></div><div class='col-3' id='Total'><span class="cur cur1 mbr-fonts-style">$ </span></div>
 </div>
 </div>
 </div>
@@ -24,6 +24,7 @@
             var myTable = $('#mycartTable')
             var myTableBody = myTable.children('tbody')
             var myForm = $('#addTodo')
+            var total =$('#Total')
 
 
             $.get("{{ path('api') }}", function (data) {
@@ -51,11 +52,15 @@
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                         </select></td>
-                                <td class='text-right'><span class="cur mbr-fonts-style display-4">$</span>` + articles.Price + `</td>
+                                <td class='text-right'><span class="cur mbr-fonts-style display-4">$ </span>` + articles.Price + `</td>
                                </tr>`
+
+                    
                     
                 myTableBody.append(str)
                 }
+                let strn=`<span class="item-box-price item-box-price1 mbr-fonts-style">`+ cart.Total +`</span>`
+                total.append(strn)
                 }
             })})
 </script>

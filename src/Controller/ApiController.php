@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
 use App\Entity\Cart;
+use App\Repository\ArticlesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,6 +34,24 @@ class ApiController extends AbstractController
             array_push($arr, $temp);
         }
         $obj->Cart = $arr;
+        return new JsonResponse($obj);
+    }
+
+    /**
+     * @Route("/new/", name="new_article", methods={"POST"})
+     * @param Request $request
+     */
+    public function addArticles(Request $request, Articles $articles)
+    {
+        $obj = new \stdClass();
+        $article = $request->request->get($articles);
+        $cart = new Cart();
+        $cart->setArticles($article);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($cart);
+        $em->flush();
+        
+
         return new JsonResponse($obj);
     }
 }
