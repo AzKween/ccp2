@@ -58,11 +58,6 @@ class Articles
      */
     private $PictureFile;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Cart::class, mappedBy="Relation_Articles")
-     */
-    private $carts;
-
 
     /**
      * @ORM\Column(type="datetime")

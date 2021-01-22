@@ -29,17 +29,11 @@
 
             $.get("{{ path('api') }}", function (data) {
                 let x
-                let a
                 for (x in data.Cart) {
-
                     let cart = data.Cart[x]
 
-                    for ( a in cart.Articles){
-
-                    let articles = cart.Articles[a]
-
                     let str = `<tr>
-                                <td class=''><p>` + articles.Name + `</p><br>
+                                <td class=''><p>` + cart.Articles + `</p><br>
                                     <a style='font-size:0.95em; text-decoration:underline;' href='#'>supprimer</a><select class="custom-select col-2 ml-4" id="inputGroupSelect01">
                                         <option value="1">Qté: 1</option>
                                         <option value="2">2</option>
@@ -52,16 +46,13 @@
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                         </select></td>
-                                <td class='text-right'><span class="cur mbr-fonts-style display-4">$ </span>` + articles.Price + `</td>
+                                <td class='text-right'><span class="cur mbr-fonts-style display-4">$ </span>` + cart.Price + `</td>
                                </tr>`
 
                     
                     
                 myTableBody.append(str)
                 }
-                let strn=`<span class="item-box-price item-box-price1 mbr-fonts-style">`+ cart.Total +`</span>`
-                total.append(strn)
-                }
-            })})
+                })})
 </script>
 {% endblock %}

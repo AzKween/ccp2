@@ -40,32 +40,11 @@
                 //on lance la requete ajax (en post)
                 $.post("{{ path('new_article') }}",
                     {   
-                        relation_user_id : user,
-                        Articles: [{"Name": name, "Price": price}],
-                        Total: 0
+                        Articles: name, 
+                        Price: price,
                     }
                     , function (data) {
-                        console.log(data)/*
-                        if (data.status == 500) {
-                            alert("Le champs est vide !")
-                        } else {
-                            //tout va bien
-                            let lockBtn = `<button class="btn btn-sm btn-warning" onclick="toggleTodo(` + data.id + `)">
-                                        <i class="fas fa-lock"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger" onclick="deleteTodo(` + data.id + `)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    `
-                            let todoName = "<span>" + todoAction + "</span>"
-                            let str = `<tr data-id="` + data.id + `">
-                                    <td>` + data.id + `</td>
-                                    <td>` + todoName + ` </td>
-                                    <td> ` + lockBtn + ` </td>
-                                </tr>`
-                            myTableBody.append(str)
-                            $('#actionInput').val('')
-                        }*/
+                        console.log(data)
                     })
             })
 </script>

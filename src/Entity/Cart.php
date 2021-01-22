@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\CartRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CartRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Json;
 
 /**
@@ -21,19 +21,14 @@ class Cart
     private $id;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Articles = [];
+    private $Articles;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $Total;
-
-    /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
-     */
-    private $Relation_User;
+    private $Price;
 
     public function __construct()
     {
@@ -47,38 +42,26 @@ class Cart
         return $this->id;
     }
 
-    public function getArticles(): array
+    public function getArticles(): string
     {
         return $this->Articles;
     }
 
-    public function setArticles(array $Articles): self
+    public function setArticles(string $Articles): self
     {
         $this->Articles = $Articles;
 
         return $this;
     }
 
-    public function getTotal(): ?float
+    public function getPrice(): ?float
     {
-        return $this->Total;
+        return $this->Price;
     }
 
-    public function setTotal(float $Total): self
+    public function setPrice(float $Price): self
     {
-        $this->Total = $Total;
-
-        return $this;
-    }
-
-    public function getRelationUser(): ?User
-    {
-        return $this->Relation_User;
-    }
-
-    public function setRelationUser(?User $Relation_User): self
-    {
-        $this->Relation_User = $Relation_User;
+        $this->Price = $Price;
 
         return $this;
     }

@@ -30,7 +30,7 @@ class ApiController extends AbstractController
             $temp = new \stdClass();
             $temp->Id = $Cart->getId();
             $temp->Articles = $Cart->getArticles();
-            $temp->Total = $Cart->getTotal();
+            $temp->Price = $Cart->getPrice();
             array_push($arr, $temp);
         }
         $obj->Cart = $arr;
@@ -41,12 +41,14 @@ class ApiController extends AbstractController
      * @Route("/new/", name="new_article", methods={"POST"})
      * @param Request $request
      */
-    public function addArticles(Request $request, Articles $articles)
+    public function addArticles(Request $request)
     {
         $obj = new \stdClass();
-        $article = $request->request->get($articles);
+        $article = $request->request->get("Articles");
+        $price = $request->request->get("Price");
         $cart = new Cart();
         $cart->setArticles($article);
+        $cart->setPrice($price);
         $em = $this->getDoctrine()->getManager();
         $em->persist($cart);
         $em->flush();

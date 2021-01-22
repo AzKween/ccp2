@@ -162,7 +162,7 @@
                                             <span class="item-box-price item-box-price1 mbr-fonts-style display-7">{{article.price}}</span>
                                         </div>
                                     </div>
-                                    <div class="item-box-footer"><a href="" class="btn item-box-btn btn-black display-4" target="_blank"><span>Buy Now</span></a>
+                                    <div class="item-box-footer"><a href="{{ path('articles_show', {'id':article.id}) }}" id="btnBuy" class=" btn item-box-btn btn-black display-4"><span>View more</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                         </div>
                         <div class="item-content align-center">
 
-                            <div class="item-box-footer mbr-pt-3"><a href="" class="btn item-box-btn btn-black display-4" target="_blank"><span>Buy Now</span></a></div>
+                        
                         </div>
                     </div>
                 </div>
