@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
 <div class="container mt-4">
@@ -36,6 +35,11 @@
         <div class="form-group col-md-2">
             <label style="text-decoration:underline">Zip</label>
             <p>{{ app.user.zip}}</p>
+        </div>
+        </div>
+
+        <div class="col-md-4">
+            <a href='{{ path('profile_edit', {'id' : app.user.id })}}'><button class='btn btn-warning'>edit profile</button></a>
         </div>
     </div>
 </div>

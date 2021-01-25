@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+<div class="container mt-4">
+{{ form_start(ProfileForm) }}
+<h2 style="font-size: 1.6em;text-decoration:underline overline;">Login information</h1>
+  <div class="form-row mt-5 mb-3">
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.email, {
+        'attr' : {'disable': true}
+      }) }} 
+    </div>
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.password, {
+            label: 'Password',
+            value : ''
+        }) }}
+    </div>
+</div>
+<h2 style="font-size: 1.6em;text-decoration:underline overline;">Personal information</h1>
+  <div class="form-row mt-5">
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.LastName) }}  
+    </div>
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.FirstName) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_row(ProfileForm.DateOfBirth) }}
+    </div>
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.Address)}}
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">State</label>
+      <p>England</p>
+    </div>
+    <div class="form-group col-md-6">
+      {{ form_row(ProfileForm.City)}}
+    </div>
+    <div class="form-group col-md-2">
+      {{ form_row(ProfileForm.Zip, {
+            label: 'Zip'
+        }) }}
+    </div>
+  </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+    {{ form_end(ProfileForm) }}
+</div>
+{% endblock %}
