@@ -14,7 +14,7 @@
     </table>
 </div><hr>
 <div class='row'>
-    <div class='col-9 text-right'><p>Total:</p></div><div class='col-3' id='Total'><span class="cur cur1 mbr-fonts-style">$ </span></div>
+    <div class='col-10 text-right'><p>Total:</p></div><div class='col-2' id='Total'><p id='Total'></p></div>
 </div>
 </div>
 </div>
@@ -24,38 +24,30 @@
             var myTable = $('#mycartTable')
             var myTableBody = myTable.children('tbody')
             var myForm = $('#addTodo')
-            var total =$('#Total')
-
+            var total = 0
 
             $.get("{{ path('api') }}", function (data) {
                 let x
                 for (x in data.Cart) {
                     let cart = data.Cart[x]
 
-                    let str = `<tr>
-                                <td class=''><p>` + cart.Articles + `</p><br>
-                                    <a style='font-size:0.95em; text-decoration:underline;' href='#'>supprimer</a><select class="custom-select col-2 ml-4" id="inputGroupSelect01">
-                                        <option value="1">Qté: 1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        </select></td>
+                    let str = `<tr class='ligne'>
+                                <td><p>` + cart.Articles + `</p><br>
+                                    <a style='font-size:0.95em; text-decoration:underline;' href='#'>supprimer</a></td>
                                 <td class='text-right'><span class="cur mbr-fonts-style display-4">$ </span>` + cart.Price + `</td>
                                </tr>`
 
-                    
-                    
-                myTableBody.append(str)
-                }
-
                 
 
+                
+                myTableBody.append(str)
+                for ( i=0; i < myTableBody.length  ; i++){
+                     total += cart.Price
+                    }
+                }
+
+                console.log(total)
+                $('#Total').append('<span class="cur cur1 mbr-fonts-style">$</span>' + total.toFixed(2))
                 })})
 </script>
 {% endblock %}

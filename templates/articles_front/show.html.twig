@@ -18,7 +18,7 @@
         </div>
         <div class="col-6">
             <h4 data-id='{{article.name}}' class="item-title mbr-fonts-style mbr-bold text-success mbr-pb-1 display-4 name">{{article.name}}</h4><br>
-            <p data-id='{{ app.user.id }}' id='user' class="item-box-text item-box-text1 mbr-fonts-style mbr-pb-4 display-7">{{article.description}}</p>
+            <p class="item-box-text item-box-text1 mbr-fonts-style mbr-pb-4 display-7">{{article.description}}</p>
         </div>
         <div class="col-3">
         <span class="cur mbr-fonts-style display-4">$ </span><span data-id='{{article.price}}' id='price' class="item-price mbr-fonts-style display-4">{{article.price}}</span><br>
@@ -36,7 +36,6 @@
                 //on définit la valeur de l'input comme étant la variable todoAction
                 let name = $('.name').attr('data-id')
                 let price = $('#price').attr('data-id')
-                let user = $('#user').attr('data-id')
                 //on lance la requete ajax (en post)
                 $.post("{{ path('new_article') }}",
                     {   
