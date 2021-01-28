@@ -94,9 +94,9 @@ body{font-family: Manrope;}blockquote{border-color: #6d7a71;}div[submit-success]
             <!-- SHOW LOGO -->
             <div class="navbar-brand">
                 {% if sites == true %}
-                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="#">{{ sites[0].title }} Admin</a></span>    
+                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="{{path('admin_main')}}">{{ sites[0].title }} Admin</a></span>    
                 {% else %}
-                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="#">Default Admin</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption  text-black display-6 display-5" href="{{path('admin_main')}}">Default Admin</a></span>
                 {% endif %}
             </div>
             <!-- SHOW LOGO END -->
