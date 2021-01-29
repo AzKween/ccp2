@@ -54,7 +54,7 @@ class ArticlesFrontController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="articles_show", methods={"GET"})
+     * @Route("/{id}", name="articlesFront_show", methods={"GET"})
      */
     public function show(Articles $article, CategoriesRepository $categoriesRepository, KindsRepository $kindsRepository, SiteRepository $siteRepository, ArticlesRepository $articlesRepository , Request $request, PaginatorInterface $paginator): Response
     {
